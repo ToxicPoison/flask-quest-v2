@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://no6ldsalc8xf"]
+
+[resource]
+shading_mode = 2
+diffuse_mode = 2
+vertex_color_use_as_albedo = true
+rim = 0.09
+rim_tint = 0.44
+billboard_keep_scale = true

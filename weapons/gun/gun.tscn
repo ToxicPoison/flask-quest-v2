@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqfrr1roao4w3"]
+
+[ext_resource type="Script" path="res://weapons/gun/Gun.gd" id="1_6gl4o"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_6gl4o")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Visual"]
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 6.0
+color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.06
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
