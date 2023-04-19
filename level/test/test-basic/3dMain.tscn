@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Material" uid="uid://cdo3mwcnonefq" path="res://level/test/test-basic/StyleMat.tres" id="1_rtgu4"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="2_kl3lj"]
+[ext_resource type="Texture2D" uid="uid://csc7q0frlxc2i" path="res://level/test/test-basic/desert_sky.png" id="5_1il06"]
+[ext_resource type="Material" uid="uid://no6ldsalc8xf" path="res://level/test/test-basic/toonMat2Base.tres" id="7_dvif2"]
+[ext_resource type="Material" path="res://3dPlat/toonMat.tres" id="7_ra3a1"]
+[ext_resource type="PackedScene" path="res://level/test/test-basic/ground/ground_test.tscn" id="8_2is8q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0mru"]
+shading_mode = 2
+roughness = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plxxf"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fexpb"]
+panorama = ExtResource("5_1il06")
+
+[sub_resource type="Sky" id="Sky_caqun"]
+sky_material = SubResource("PanoramaSkyMaterial_fexpb")
+
+[sub_resource type="Environment" id="Environment_crf4k"]
+background_mode = 2
+sky = SubResource("Sky_caqun")
+fog_light_color = Color(0.67451, 0.835294, 1, 1)
+fog_density = 0.0034
+fog_sky_affect = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyxpj"]
+shading_mode = 2
+vertex_color_use_as_albedo = true
+rim = 0.09
+rim_tint = 0.44
+billboard_keep_scale = true
+
+[node name="Main3D" type="Node3D"]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69934, 3.26103, 1.01884)
+material = ExtResource("1_rtgu4")
+
+[node name="Player" parent="." instance=ExtResource("2_kl3lj")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_g0mru")
+size = Vector3(20, 1, 20)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
+shape = SubResource("BoxShape3D_plxxf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -2.18557e-08, 0.5, -0.5, -3.78552e-08, 0.866025, 0, -1, -4.37114e-08, 0, 3.38069, 0)
+light_color = Color(0.968627, 0.905882, 0.839216, 1)
+shadow_enabled = true
+directional_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_crf4k")
+
+[node name="WorldMatTest" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.1776, 0, -50.8331)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldMatTest"]
+transform = Transform3D(1.44016, 0, 0, 0, 11.8784, 0, 0, 0, 7.04782, 14.0136, 6, -19.9802)
+size = Vector3(7.41699, 1, 1)
+material = ExtResource("7_ra3a1")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="WorldMatTest"]
+transform = Transform3D(1.44016, 0, 0, 0, 11.8784, 0, 0, 0, 7.04782, 0.324203, 6, -24.3463)
+size = Vector3(7.41699, 1, 1)
+material = ExtResource("7_ra3a1")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="WorldMatTest"]
+transform = Transform3D(1.44016, 0, 0, 0, 11.8784, 0, 0, 0, 7.04782, -21.7369, 6, -15.5416)
+size = Vector3(7.41699, 1, 1)
+material = ExtResource("7_ra3a1")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WorldMatTest"]
+transform = Transform3D(9.11352, 0, 0, 0, 1.03678, 0, 0, 0, 9.11352, -13.0273, 2.92539, -21.6634)
+material = ExtResource("7_ra3a1")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="WorldMatTest"]
+transform = Transform3D(7.92777, 0.511384, 0, -4.49518, 0.901884, 0, 0, 0, 9.11352, -2.5943, 10.7957, -15.9223)
+material = ExtResource("7_ra3a1")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="WorldMatTest"]
+transform = Transform3D(0.93311, 1.24145, 0, -2.33365, 0.496392, 0, 0, 0, 3.15688, -21.6718, 5.00043, -12.3934)
+height = 14.2759
+material = ExtResource("7_ra3a1")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="WorldMatTest"]
+transform = Transform3D(4.26438, 0, 0, 0, 4.26438, 0, 0, 0, 4.26438, -3.15241, 4.61443, -8.04823)
+inner_radius = 0.826513
+outer_radius = 1.26315
+material = ExtResource("7_ra3a1")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="WorldMatTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2623, 0)
+radius = 2.70006
+radial_segments = 64
+rings = 32
+material = ExtResource("7_ra3a1")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="WorldMatTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6749, 10.2623, 0)
+radius = 2.70006
+radial_segments = 64
+rings = 32
+material = ExtResource("7_dvif2")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="WorldMatTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.2135, 10.2623, 0)
+radius = 2.70006
+radial_segments = 64
+rings = 32
+material = SubResource("StandardMaterial3D_fyxpj")
+
+[node name="groundTest" parent="." instance=ExtResource("8_2is8q")]

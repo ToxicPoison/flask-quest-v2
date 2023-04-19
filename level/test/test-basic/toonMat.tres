@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://level/test/test-basic/BaseTest.gdshader" id="1_grw70"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_grw70")
+shader_parameter/color = Color(0.266667, 0.501961, 0.537255, 1)
+shader_parameter/sun_dir = Vector3(0, 1, 0)
