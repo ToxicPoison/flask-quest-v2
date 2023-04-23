@@ -1,9 +1,8 @@
-[gd_scene load_steps=47 format=3 uid="uid://bppd1cmwbq1g8"]
+[gd_scene load_steps=46 format=3 uid="uid://bppd1cmwbq1g8"]
 
 [ext_resource type="Script" path="res://player/CharacterBody3D.gd" id="1_b3j2s"]
 [ext_resource type="Texture2D" uid="uid://skk3o50cmont" path="res://player/green_sheet.png" id="2_k43w0"]
 [ext_resource type="Texture2D" uid="uid://pq4k73q7snbx" path="res://level/test/test-basic/shadow_circle.png" id="3_r13kl"]
-[ext_resource type="PackedScene" uid="uid://bm7ks50tc60qr" path="res://orbit_camera.tscn" id="4_gm2mx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2acr7"]
 atlas = ExtResource("2_k43w0")
@@ -399,5 +398,3 @@ albedo_mix = 0.69
 normal_fade = 0.094
 upper_fade = 1e-05
 lower_fade = 0.5
-
-[node name="OrbitCamera" parent="." instance=ExtResource("4_gm2mx")]

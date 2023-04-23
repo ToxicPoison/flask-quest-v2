@@ -20,13 +20,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var speed = def_speed
 @onready var friction = def_friction
 @onready var sprite = $Sprite
-@onready var spring = $OrbitCamera
-@onready var cam_pos = $OrbitCamera/CamPos
-@onready var camera = $OrbitCamera/CamPos/Camera3D
-
 
 var running := false
-
 
 var rot_speed_mod = 1 #Turning too sharply decreases this number
 
@@ -128,6 +123,7 @@ func get_input():
 
 
 func animate():
+	var camera = get_viewport().get_camera_3d()
 	var cam_pos_flat = Vector2(camera.global_position.x, camera.global_position.z)
 	var pos_flat = Vector2(global_position.x, global_position.z)
 	var view_angle = cam_pos_flat.angle_to_point(pos_flat)

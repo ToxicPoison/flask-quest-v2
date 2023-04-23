@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://4eyvlibrhgbb"]
+[gd_scene load_steps=3 format=3 uid="uid://4eyvlibrhgbb"]
 
+[ext_resource type="PackedScene" uid="uid://bm7ks50tc60qr" path="res://orbit_camera.tscn" id="1_dpnxs"]
 [ext_resource type="PackedScene" uid="uid://bppd1cmwbq1g8" path="res://player/player.tscn" id="1_v4epf"]
 
 [node name="lab-intro" type="Node3D"]
+
+[node name="OrbitCamera" parent="." node_paths=PackedStringArray("cam_target") instance=ExtResource("1_dpnxs")]
+cam_target = NodePath("../Player")
 
 [node name="level-geometry" type="Node3D" parent="."]
 

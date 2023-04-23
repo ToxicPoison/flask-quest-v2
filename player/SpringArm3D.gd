@@ -11,7 +11,7 @@ var rig_follow_speed := 0.3
 var cam_rot_speed = 1.0
 var y_offset := 3.0
 
-@onready var cam_target = get_parent()
+@export var cam_target = get_parent()
 @onready var all_rot = rotation
 @onready var target_pos = position
 @onready var target_rot = rotation
