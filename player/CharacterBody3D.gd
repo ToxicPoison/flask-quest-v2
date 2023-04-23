@@ -20,9 +20,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var speed = def_speed
 @onready var friction = def_friction
 @onready var sprite = $Sprite
-@onready var spring = $SpringArm3D
-@onready var cam_pos = $SpringArm3D/CamPos
-@onready var camera = $SpringArm3D/CamPos/Camera3D
+@onready var spring = $OrbitCamera
+@onready var cam_pos = $OrbitCamera/CamPos
+@onready var camera = $OrbitCamera/CamPos/Camera3D
 
 
 var running := false
@@ -56,7 +56,15 @@ var animation = "Toward"
 func get_input():
 	
 	input_direction = Input.get_vector("left", "right", "up", "down")
-	input_direction = input_direction.rotated(-spring.global_rotation.y)
+	# Pushing up on the joystick will move the character away from the camera
+	# Get the angle between the camera and the player
+	# Get the currently active camera
+	var camera = get_viewport().get_camera_3d()
+	var camera_angle = -camera.global_transform.basis.y.normalized()
+	var camera_angle_flattened = Vector2(camera_angle.x, camera_angle.z).normalized()
+	var input_angle = camera_angle_flattened.angle()
+
+	input_direction = input_direction.rotated(input_angle - PI/2)
 	
 	var run_input = Input.get_action_strength("run")
 	var target_speed = lerpf(def_speed, run_speed, run_input)

@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://4eyvlibrhgbb"]
+
+[ext_resource type="PackedScene" uid="uid://bppd1cmwbq1g8" path="res://player/player.tscn" id="1_v4epf"]
+
+[node name="lab-intro" type="Node3D"]
+
+[node name="level-geometry" type="Node3D" parent="."]
+
+[node name="room" type="CSGBox3D" parent="level-geometry"]
+use_collision = true
+flip_faces = true
+size = Vector3(11.9132, 4.13381, 9.58206)
+
+[node name="desk" type="CSGCombiner3D" parent="level-geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3691, 0)
+
+[node name="surface" type="CSGBox3D" parent="level-geometry/desk"]
+size = Vector3(1.97403, 0.0781475, 1)
+
+[node name="leg" type="CSGBox3D" parent="level-geometry/desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.790748, -0.36452, 0.432067)
+size = Vector3(0.0697398, 0.720048, 0.0581923)
+
+[node name="leg2" type="CSGBox3D" parent="level-geometry/desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.791, -0.365, 0.432)
+size = Vector3(0.0697398, 0.720048, 0.0581923)
+
+[node name="leg3" type="CSGBox3D" parent="level-geometry/desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.790748, -0.36452, -0.432)
+size = Vector3(0.0697398, 0.720048, 0.0581923)
+
+[node name="leg4" type="CSGBox3D" parent="level-geometry/desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.791, -0.365, -0.432)
+size = Vector3(0.0697398, 0.720048, 0.0581923)
+
+[node name="bed" type="CSGCombiner3D" parent="level-geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, -1.88434, -2.78179)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="level-geometry/bed"]
+size = Vector3(0.68453, 0.361601, 1.30912)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="level-geometry/bed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0490903, 0)
+size = Vector3(0.80456, 0.361601, 1.40485)
+
+[node name="pillow" type="CSGCombiner3D" parent="level-geometry/bed"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="level-geometry/bed/pillow"]
+transform = Transform3D(1, 0, 0, 0, 0.591931, 0, 0, 0, 1, 0.11737, 0.209528, -0.484643)
+radius = 0.239155
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="level-geometry/bed/pillow"]
+transform = Transform3D(1, 0, 0, 0, 0.591931, 0, 0, 0, 1, -0.108875, 0.209528, -0.484643)
+radius = 0.239155
+
+[node name="Player" parent="." instance=ExtResource("1_v4epf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18758, 0, 0.631254)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.990524, -0.130183, 0.0437584, 0, 0.318612, 0.947885, -0.137341, -0.938903, 0.315593, 0, 3.0201, 0)
