@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://6hrjoxujlhpq"]
+
+[ext_resource type="PackedScene" uid="uid://cr5mh7e85rwdc" path="res://npc/base_npc/base_npc.tscn" id="1_rq3s1"]
+[ext_resource type="Texture2D" uid="uid://cnf2oh1vijs0u" path="res://npc/deer/deer.png" id="2_ux78g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_enpjh"]
+radius = 0.25
+height = 1.0
+
+[node name="Deer" instance=ExtResource("1_rq3s1")]
+
+[node name="Sprite3D" parent="." index="0"]
+offset = Vector2(0, 64)
+texture = ExtResource("2_ux78g")
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_enpjh")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://35kop00wta5i"]
+
+[ext_resource type="PackedScene" uid="uid://dlilrt742jkj0" path="res://level/city/city-main/city-main.glb" id="1_uvr6m"]
+[ext_resource type="Material" uid="uid://7iyiujfdicy0" path="res://level/city/city_base.tres" id="2_82pcd"]
+
+[node name="city-main" instance=ExtResource("1_uvr6m")]
+
+[node name="CityBase" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_82pcd")

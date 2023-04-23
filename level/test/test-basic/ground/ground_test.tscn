@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://cqf66theryorw"]
 
 [ext_resource type="PackedScene" uid="uid://dp4l0138f0y2x" path="res://level/test/test-basic/ground/groundTest.glb" id="1_gduq6"]
-[ext_resource type="Material" path="res://3dPlat/ground/testConcreteMat.tres" id="2_kof1v"]
-[ext_resource type="Material" path="res://3dPlat/ground/testGrassyMat.tres" id="3_oq0o6"]
+[ext_resource type="Material" uid="uid://mo2kqveq2r3" path="res://level/test/test-basic/ground/testConcreteMat.tres" id="2_kof1v"]
+[ext_resource type="Material" uid="uid://d2petjlf8befq" path="res://level/test/test-basic/ground/testGrassyMat.tres" id="3_oq0o6"]
 
 [node name="groundTest" instance=ExtResource("1_gduq6")]
 
