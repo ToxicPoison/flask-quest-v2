@@ -181,9 +181,3 @@ func _physics_process(delta):
 	animate()
 	move_and_slide()
 	
-
-
-
-
-
-

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6t78xlaac76q"]
+[gd_scene load_steps=9 format=3 uid="uid://c6t78xlaac76q"]
 
 [ext_resource type="PackedScene" uid="uid://35kop00wta5i" path="res://level/city/city-main/city_main_mesh.tscn" id="1_rpndc"]
 [ext_resource type="Texture2D" uid="uid://csc7q0frlxc2i" path="res://level/test/test-basic/desert_sky.png" id="2_cbevi"]
-[ext_resource type="PackedScene" uid="uid://djwsj76upiowf" path="res://player/player.tscn" id="3_q07no"]
+[ext_resource type="PackedScene" uid="uid://bppd1cmwbq1g8" path="res://player/player.tscn" id="3_q07no"]
 [ext_resource type="PackedScene" uid="uid://6hrjoxujlhpq" path="res://npc/deer/deer.tscn" id="4_srlc8"]
+[ext_resource type="PackedScene" uid="uid://bm7ks50tc60qr" path="res://orbit_camera.tscn" id="5_t541i"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7m8fg"]
 panorama = ExtResource("2_cbevi")
@@ -36,3 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)
 
 [node name="Deer" parent="." instance=ExtResource("4_srlc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+
+[node name="OrbitCamera" parent="." node_paths=PackedStringArray("cam_target") instance=ExtResource("5_t541i")]
+cam_target = NodePath("../Player")
