@@ -382,7 +382,7 @@ billboard = 2
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_jsgtm")
-animation = &"AL"
+animation = &"Toward"
 autoplay = "AwayIdle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

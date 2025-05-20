@@ -43,6 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3007, 0.26103, 1.01884)
 material = ExtResource("1_rtgu4")
 
 [node name="Player" parent="." instance=ExtResource("2_kl3lj")]
+air_friction = 0.99
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 visible = false

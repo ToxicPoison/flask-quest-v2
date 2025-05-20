@@ -1,9 +1,11 @@
 extends SpringArm3D
 
 
-var mouse_sens := 0.01
-var min_pitch_deg := -25
-var max_pitch_deg := 25
+var mouse_sens := 0.005
+# This is in addition to the camera's initial rotation:
+var min_pitch_deg := -25 # Negative = looking down.
+var max_pitch_deg := 50
+
 var cam_min_pitch_deg := -70
 var cam_max_pitch_deg := 70
 var rig_rot_speed := 0.8
@@ -23,23 +25,21 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		target_rot.y -= event.relative.x * mouse_sens
 		target_rot.y = wrapf(target_rot.y,0.0,TAU)
 		
 		target_rot.x -= event.relative.y * mouse_sens
 		target_rot.x = clamp(target_rot.x, deg_to_rad(min_pitch_deg), deg_to_rad(max_pitch_deg))
-#		target_rot = Vector2(clamp(all_rot.x, deg_to_rad(min_pitch_deg), deg_to_rad(max_pitch_deg)), all_rot.y)
-#		if all_rot.x > deg_to_rad(max_pitch_deg):
-#			cam_target_rot.x = all_rot.x - cam_max_pitch_deg
-#		elif all_rot.x < deg_to_rad(min_pitch_deg):
-#			cam_target_rot.x = all_rot.x + cam_min_pitch_deg
 		
 		
 		
 	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		var i = Input.MOUSE_MODE_VISIBLE
+		if Input.mouse_mode == i:
+			i = Input.MOUSE_MODE_CAPTURED
+		Input.mouse_mode = i
 
 
 func _physics_process(delta):

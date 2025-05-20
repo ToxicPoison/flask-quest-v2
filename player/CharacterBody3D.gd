@@ -10,8 +10,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 @export var run_accel = 0.05
-@export_range(0, 1) var def_friction = 0.1
-@export_range(0, 1) var run_friction = 0.84
+@export_range(0, 1) var def_friction = 0.04
+@export_range(0, 1) var run_friction = 0.3
 @export_range(0, 1) var rotation_speed = 0.2
 @export var rotation_slowdown = 10.0
 @export var anim_speed = 0.2
@@ -37,12 +37,14 @@ var jumping := false
 
 var landed := true
 var jump_time := -10
-@export var jump_vel_def := 6.0
+## Vertical speed you jump at
+@export var jump_vel_def := 5.0
 var jump_vel := 0.0
 @export var jump_falloff = 0.7
-@export var jump_speed_multiplier_def = 2.0
-@export var air_friction = 0.98
-@export var air_speed = 0.5
+## Horizontal speed is multiplied by this number after jumping
+@export var jump_speed_multiplier_def = 1.0
+@export var air_friction = 0.95
+@export var air_speed = 0.1
 var jump_spd := 1.0
 
 var animation = "Toward"
@@ -55,8 +57,10 @@ func get_input():
 	# Get the angle between the camera and the player
 	# Get the currently active camera
 	var camera = get_viewport().get_camera_3d()
-	var camera_angle = -camera.global_transform.basis.y.normalized()
-	var camera_angle_flattened = Vector2(camera_angle.x, camera_angle.z).normalized()
+	var camera_angle = Vector3(1.0, 0.0, 0.0)
+	if camera:
+		camera_angle = camera.global_transform.basis.z
+	var camera_angle_flattened = Vector2(camera_angle.x, camera_angle.z)
 	var input_angle = camera_angle_flattened.angle()
 
 	input_direction = input_direction.rotated(input_angle - PI/2)

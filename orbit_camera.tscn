@@ -11,3 +11,4 @@ script = ExtResource("1_gnkxl")
 transform = Transform3D(1, 0, 0, 0, 0.917678, 0.397324, 0, -0.397324, 0.917678, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CamPos"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, -0.0381217, -0.507426)
