@@ -1,0 +1,259 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmi2m3qq6q8dw"]
+
+[ext_resource type="PackedScene" uid="uid://bm7ks50tc60qr" path="res://player/orbit_camera.tscn" id="1_6ixqm"]
+[ext_resource type="Material" uid="uid://b83d8m8nulccr" path="res://level/general/dev_tile_material.tres" id="1_o5o4x"]
+[ext_resource type="PackedScene" uid="uid://bppd1cmwbq1g8" path="res://player/player.tscn" id="2_br2ol"]
+[ext_resource type="Texture2D" uid="uid://csc7q0frlxc2i" path="res://level/test/test-basic/desert_sky.png" id="4_47iu3"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f4ird"]
+panorama = ExtResource("4_47iu3")
+
+[sub_resource type="Sky" id="Sky_3olx1"]
+sky_material = SubResource("PanoramaSkyMaterial_f4ird")
+
+[sub_resource type="Environment" id="Environment_q1pna"]
+background_mode = 2
+sky = SubResource("Sky_3olx1")
+fog_light_color = Color(0.67451, 0.835294, 1, 1)
+fog_density = 0.0034
+fog_sky_affect = 0.0
+
+[node name="TestParkour" type="Node3D"]
+
+[node name="LevelGeometry" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(5, 2, 4)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.08979, 0)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(75.9648, 2, 131.022)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5674, -0.298166, 1.09277)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(9.01611, 2, 6.18555)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.847, -1.20905, 8.97223)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(18.8748, 2, 6.18555)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7943, 0.701834, -4)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(9.46985, 2, 4)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7917, -0.219833, 11.5151)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(14.4209, 2, 4)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8808, 1.13747, -4)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(1.03912, 2, 4)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6234, 2.13926, -6.35889)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(5.18021, 2, 4)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.156117, 4.28242, -11.7116)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(5.18021, 0.512695, 1.90991)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.21594, 4.8084, -13.1223)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(2.5694, 0.512695, 1.90991)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.33193, 5.76574, -4.75063)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(4.33744, 0.512695, 3.72302)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.33193, 5.76574, 8.95812)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(4.33744, 0.512695, 3.72302)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80616, 6.23724, 4.33119)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(4.33744, 0.512695, 3.72302)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02519, 6.76079, 0.258745)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(4.33744, 0.512695, 3.72302)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -16.7795, 4.36206, -10.094)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(5.18021, 0.512695, 1.90991)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.74996, 0.948098, 13.7866)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(3.36696, 2, 4)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3632, -1.29068, -2.6111)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(3.36696, 2, 4)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.45285, -1.29068, -3.62794)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(3.36696, 2, 4)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2601, 0.948098, 13.7866)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(3.36696, 2, 4)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.338, 1.8235, 13.7866)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(3.36696, 2, 4)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8348, 1.06779, -6.01026)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(3.36696, 6.23303, 36.6997)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(-4.37114e-08, 0, -1, -0.258819, 0.965926, 1.13133e-08, 0.965926, 0.258819, -4.2222e-08, 13.404, 0.23724, -0.416105)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(3.79102, 2, 4)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1.28155e-07, 2.26267e-08, 1, -0.258819, 0.965926, 1.13133e-08, -0.965926, -0.258819, 1.29645e-07, -10.6694, -0.668721, 7.96492)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(3.75391, 2, 9.02246)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(0.866881, 0.498056, -0.0213962, -0.49817, 0.867079, 4.4224e-08, 0.0185523, 0.0106589, 0.999771, -17.5116, 1.55829, -3.39348)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+size = Vector3(6.95325, 2, 9.02246)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41896, -2.80663, -3.03772)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+height = 5.87335
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.755592, -2.46273, -6.15124)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+height = 5.87335
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82298, -2.00328, -8.84227)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+height = 5.87335
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60515, 0.621142, -10.2123)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+radius = 1.62748
+height = 5.87335
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.33646, -0.911213, 2.2991)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+radius = 1.62748
+height = 0.585777
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.80704, -0.911213, -9.51843)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+radius = 1.62748
+height = 0.585777
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.97181, -0.911213, -14.8734)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+radius = 2.94855
+height = 0.585777
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.297754, -0.254882, -13.7295)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+radius = 2.94855
+height = 0.585777
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.02203, -0.0995939, -10.2123)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+radius = 1.62748
+height = 5.87335
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.92441, -0.984903, -8.95578)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+radius = 1.62748
+height = 5.87335
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2871, -1.73407, -8.44048)
+material_override = ExtResource("1_o5o4x")
+use_collision = true
+radius = 1.62748
+height = 5.87335
+
+[node name="OrbitCamera" parent="." node_paths=PackedStringArray("cam_target") instance=ExtResource("1_6ixqm")]
+cam_target = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_br2ol")]
+run_speed = 1.5
+run_friction = 0.8
+air_friction = 0.97
+run_air_friction = 0.95
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
+transform = Transform3D(0.400503, 0.52292, 0.752431, -0.849621, -0.0955785, 0.518661, 0.343133, -0.847006, 0.406005, 0, 3.38069, 0)
+light_color = Color(0.968627, 0.905882, 0.839216, 1)
+shadow_enabled = true
+directional_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Player"]
+environment = SubResource("Environment_q1pna")

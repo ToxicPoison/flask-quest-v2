@@ -1,8 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://bppd1cmwbq1g8"]
+[gd_scene load_steps=53 format=3 uid="uid://bppd1cmwbq1g8"]
 
-[ext_resource type="Script" path="res://player/CharacterBody3D.gd" id="1_b3j2s"]
+[ext_resource type="Script" path="res://player/player_movement.gd" id="1_b3j2s"]
 [ext_resource type="Texture2D" uid="uid://skk3o50cmont" path="res://player/green_sheet.png" id="2_k43w0"]
 [ext_resource type="Texture2D" uid="uid://pq4k73q7snbx" path="res://level/test/test-basic/shadow_circle.png" id="3_r13kl"]
+[ext_resource type="AudioStream" uid="uid://coxhc2up1sb8q" path="res://player/sounds/footstep.wav" id="4_g1mpt"]
+[ext_resource type="AudioStream" uid="uid://cyjqyamyohsmt" path="res://player/sounds/impact.wav" id="7_glj3a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2acr7"]
 atlas = ExtResource("2_k43w0")
@@ -371,13 +373,74 @@ animations = [{
 radius = 0.25
 height = 1.5
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j7s2d"]
+random_pitch = 1.07
+random_volume_offset_db = 0.71
+streams_count = 1
+stream_0/stream = ExtResource("4_g1mpt")
+
+[sub_resource type="Animation" id="Animation_b8abo"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kfaun"]
+resource_name = "land"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.148651, 1),
+"update": 0,
+"values": [Vector3(1.1, 0.9, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5q5em"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ap6p"]
+_data = {
+"RESET": SubResource("Animation_5q5em"),
+"idle": SubResource("Animation_b8abo"),
+"land": SubResource("Animation_kfaun")
+}
+
 [node name="Player" type="CharacterBody3D"]
 floor_constant_speed = true
 floor_snap_length = 0.3
 script = ExtResource("1_b3j2s")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
-offset = Vector2(0, 88.021)
+cast_shadow = 0
+offset = Vector2(0, 96)
 billboard = 2
 alpha_cut = 1
 texture_filter = 0
@@ -398,3 +461,30 @@ albedo_mix = 0.69
 normal_fade = 0.094
 upper_fade = 1e-05
 lower_fade = 0.5
+
+[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_j7s2d")
+volume_db = 67.553
+bus = &"World"
+
+[node name="ImpactAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_glj3a")
+volume_db = -11.93
+pitch_scale = 1.41
+bus = &"World"
+
+[node name="LedgeJumpTimeout" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="DebugLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48514, 0)
+visible = false
+billboard = 1
+text = "Debug Information"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ap6p")
+}
+autoplay = "idle"

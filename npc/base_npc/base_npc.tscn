@@ -8,6 +8,7 @@
 [node name="BaseNPC" type="CharacterBody3D"]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+cast_shadow = 0
 offset = Vector2(0, 128)
 pixel_size = 0.0078
 billboard = 2

@@ -1,7 +1,8 @@
 extends SpringArm3D
 
 
-var mouse_sens := 0.005
+var mouse_sens := 0.002
+var joystick_sens := 3.0
 # This is in addition to the camera's initial rotation:
 var min_pitch_deg := -25 # Negative = looking down.
 var max_pitch_deg := 50
@@ -41,8 +42,16 @@ func _unhandled_input(event):
 			i = Input.MOUSE_MODE_CAPTURED
 		Input.mouse_mode = i
 
+func _process(delta):
+	var direction = Input.get_vector("camera_left", "camera_right", "camera_up", "camera_down")
+	target_rot.y -= direction.x * delta * joystick_sens
+	target_rot.y = wrapf(target_rot.y, 0.0, TAU)
+	
+	target_rot.x -= direction.y * delta * joystick_sens
+	target_rot.x = clamp(target_rot.x, deg_to_rad(min_pitch_deg), deg_to_rad(max_pitch_deg))
 
 func _physics_process(delta):
+	
 	rotation.y = lerp_angle(rotation.y, target_rot.y, rig_rot_speed)
 	rotation.x = lerp_angle(rotation.x, target_rot.x, rig_rot_speed)
 #	camera.rotation.x = lerp_angle(camera.rotation.x, cam_target_rot.x, cam_rot_speed)

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://csc7q0frlxc2i" path="res://level/test/test-basic/desert_sky.png" id="2_cbevi"]
 [ext_resource type="PackedScene" uid="uid://bppd1cmwbq1g8" path="res://player/player.tscn" id="3_q07no"]
 [ext_resource type="PackedScene" uid="uid://6hrjoxujlhpq" path="res://npc/deer/deer.tscn" id="4_srlc8"]
-[ext_resource type="PackedScene" uid="uid://bm7ks50tc60qr" path="res://orbit_camera.tscn" id="5_t541i"]
+[ext_resource type="PackedScene" uid="uid://bm7ks50tc60qr" path="res://player/orbit_camera.tscn" id="5_t541i"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7m8fg"]
 panorama = ExtResource("2_cbevi")
@@ -24,8 +24,9 @@ fog_sky_affect = 0.0
 [node name="city-main" parent="." instance=ExtResource("1_rpndc")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.640528, 0.293613, -0.709588, -0.697385, 0.164476, 0.697569, 0.321526, 0.941668, 0.0994097, 0, 3.38069, 0)
+transform = Transform3D(-0.325299, -0.93992, -0.103594, -0.697384, 0.164476, 0.697569, -0.63862, 0.299163, -0.708989, 0, 3.38069, 0)
 light_color = Color(0.968627, 0.905882, 0.839216, 1)
+light_energy = 1.36
 shadow_enabled = true
 directional_shadow_mode = 0
 

@@ -4,9 +4,8 @@
 
 [resource]
 next_pass = ExtResource("1_kokph")
-shading_mode = 2
 diffuse_mode = 3
 vertex_color_use_as_albedo = true
-rim = 0.09
-rim_tint = 0.44
+rim = 0.06
+rim_tint = 0.59
 billboard_keep_scale = true
