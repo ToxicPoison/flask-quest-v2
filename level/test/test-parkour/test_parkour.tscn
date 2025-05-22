@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmi2m3qq6q8dw"]
+[gd_scene load_steps=9 format=3 uid="uid://bmi2m3qq6q8dw"]
 
 [ext_resource type="PackedScene" uid="uid://bm7ks50tc60qr" path="res://player/orbit_camera.tscn" id="1_6ixqm"]
 [ext_resource type="Material" uid="uid://b83d8m8nulccr" path="res://level/general/dev_tile_material.tres" id="1_o5o4x"]
 [ext_resource type="PackedScene" uid="uid://bppd1cmwbq1g8" path="res://player/player.tscn" id="2_br2ol"]
 [ext_resource type="Texture2D" uid="uid://csc7q0frlxc2i" path="res://level/test/test-basic/desert_sky.png" id="4_47iu3"]
+[ext_resource type="PackedScene" uid="uid://df73no5oxl04n" path="res://player/abilities/dash_ability.tscn" id="5_uern2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f4ird"]
 panorama = ExtResource("4_47iu3")
@@ -243,17 +244,16 @@ height = 5.87335
 [node name="OrbitCamera" parent="." node_paths=PackedStringArray("cam_target") instance=ExtResource("1_6ixqm")]
 cam_target = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("2_br2ol")]
-run_speed = 1.5
-run_friction = 0.8
-air_friction = 0.97
-run_air_friction = 0.95
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
-transform = Transform3D(0.400503, 0.52292, 0.752431, -0.849621, -0.0955785, 0.518661, 0.343133, -0.847006, 0.406005, 0, 3.38069, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.186631, -0.865318, -0.465182, -0.849622, -0.0955778, 0.51866, -0.493267, 0.492027, -0.717355, 0, 3.38069, 0)
 light_color = Color(0.968627, 0.905882, 0.839216, 1)
 shadow_enabled = true
 directional_shadow_mode = 0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Player"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q1pna")
+
+[node name="Player" parent="." instance=ExtResource("2_br2ol")]
+jump_speed = 5.0
+
+[node name="DashAbility" parent="Player" instance=ExtResource("5_uern2")]

@@ -1,23 +1,25 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 ## Target speed for walking
 @export var walk_speed = 4.0
 ## Target speed for running
-@export var run_speed = 3.0
+@export var run_speed = 1.5
 ## Friction when walking
 @export_range(0, 1) var walk_friction = 0.04
 ## Friction when running
-@export_range(0, 1) var run_friction = 0.7
-## Target speed when jumping
+@export_range(0, 1) var run_friction = 0.8
+## Target speed when in the air
 @export var air_speed = 0.1
+## Target speed when in the air and holding the run button
 @export var run_air_speed = 0.3
 ## Friction when jumping
-@export var air_friction = 0.99
-@export var run_air_friction = 0.99
+@export var air_friction = 0.97
+## Friction when in the air and holding the run button
+@export var run_air_friction = 0.96
 ## Vertical speed you jump at
-@export var jump_vel_def := 5.0
+@export var jump_speed := 5.5
 
 @export var anim_speed_scale = 0.2
 
@@ -33,17 +35,26 @@ var input_direction := Vector2.ZERO
 var force_dir := Vector2(0.0, 0.0)
 var last_velocity := Vector3(1.0, 0.0, 0.0)
 
+## Is the user trying to move?
 var moving := false
+## Is the user in the air *after jumping?*
 var jumping := false
-var jump_override := false # If true, player can jump while in the air
+## Can the player jump even when in the air? Used for the ledge jumping mechanic.
+var jump_override := false
+## Was the player in the air last physics frame?
 var was_in_air := false
+## Is the player going to jump if they press the jump button?
+var can_jump := false
 
 var animation = "Toward"
 
 @onready var camera : Object = get_viewport().get_camera_3d()
+## 3D vector representing the camera's forward direction
 var camera_forward := Vector3.ZERO
+## Angle at which the camera is viewing the player
 var view_angle : float = 0.0
-var facing : float = 0.0 # The angle the player is facing. Based on the direction they last moved.
+## The angle the character is physically facing. Based on the direction they last moved.
+var facing : float = 0.0 
 
 func get_input():
 	
@@ -71,13 +82,14 @@ func get_input():
 	if was_in_air and is_on_floor():
 		jumping = false
 		was_in_air = false
-		audio_impact.volume_db = minf(absf(get_real_velocity().y) * 5.0 - 20.0, -10.0)
+		audio_impact.volume_db = minf(absf(get_real_velocity().y) * 1.0 - 20.0, -10.0)
 		audio_impact.play()
 		$AnimationPlayer.play("land")
 			
 		
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or jump_override):
-		velocity.y = jump_vel_def
+	can_jump = is_on_floor() or jump_override
+	if Input.is_action_just_pressed("jump") and can_jump:
+		velocity.y = jump_speed
 		jumping = true
 		audio_footstep.play()
 		
@@ -85,7 +97,7 @@ func get_input():
 	##########################################################
 
 	if input_direction.length() > 0.1:
-		facing = input_direction.angle()/PI
+		facing = input_direction.angle()
 		force_dir = input_direction * speed
 		moving = true
 	
@@ -103,7 +115,7 @@ func animate():
 	#7.0 is added only to prevent the x value in fmod from becoming negative.
 	#7.0 is odd in this case to flip the angle around
 	#(An even number in this case would yield a full number of revolutions
-	var r = (fmod(7.0 + view_angle/PI - facing, 2.0) - 1.0) * 8.0
+	var r = (fmod(7.0 + view_angle/PI - facing/PI, 2.0) - 1.0) * 8.0
 	
 	if r >= -1 && r <= 1:
 		animation = "Away"
@@ -148,7 +160,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	$DebugLabel.text = String.num_int64(minf(absf(get_real_velocity().y) * 5.0 - 20.0, -10.0))
 	# Calculate the player's view angle
 	# This effects the direction the player moves and which sprites they appear as
 	if camera:
@@ -162,4 +173,6 @@ func _physics_process(delta):
 	get_input()
 	animate()
 	move_and_slide()
+	
+	#$DebugLabel.text = String.num(facing, 3)
 	
