@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm7ks50tc60qr"]
+[gd_scene load_steps=3 format=3 uid="uid://bm7ks50tc60qr"]
 
 [ext_resource type="Script" path="res://player/SpringArm3D.gd" id="1_gnkxl"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_50mey"]
+radius = 0.2
+height = 0.4
 
 [node name="OrbitCamera" type="SpringArm3D"]
 spring_length = 4.0
@@ -12,3 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 0.917678, 0.397324, 0, -0.397324, 0.917678, 
 
 [node name="Camera3D" type="Camera3D" parent="CamPos"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, -0.0381217, -0.507426)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_50mey")

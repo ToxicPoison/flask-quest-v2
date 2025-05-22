@@ -243,6 +243,7 @@ height = 5.87335
 
 [node name="OrbitCamera" parent="." node_paths=PackedStringArray("cam_target") instance=ExtResource("1_6ixqm")]
 cam_target = NodePath("../Player")
+controller_mode = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.186631, -0.865318, -0.465182, -0.849622, -0.0955778, 0.51866, -0.493267, 0.492027, -0.717355, 0, 3.38069, 0)

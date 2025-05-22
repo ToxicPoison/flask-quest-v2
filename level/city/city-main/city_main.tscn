@@ -41,3 +41,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
 
 [node name="OrbitCamera" parent="." node_paths=PackedStringArray("cam_target") instance=ExtResource("5_t541i")]
 cam_target = NodePath("../Player")
+controller_mode = true
